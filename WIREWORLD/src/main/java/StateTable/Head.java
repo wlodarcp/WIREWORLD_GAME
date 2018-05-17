@@ -18,5 +18,8 @@ public class Head implements FieldState {
         return this.color;
     }
 
-
+    @Override
+    public String toString() {
+        return "Head";
+    }
 }

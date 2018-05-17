@@ -50,6 +50,23 @@ public class Game {
 
     }
 
+    /*public void animate(WireWorldApp wireWorldApp, double time, int howManyGenerations){
+        mainFieldsTable = wireWorldApp.getPen().getFieldsTable();
+        //Timeline timeline = wireWorldApp.getTimeline();
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(Animation.INDEFINITE);
+        KeyFrame changingState = new KeyFrame(animationSpeed, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                mainFieldsTable.checkNeighborhoodForAll();
+                mainFieldsTable.changeStateForAll();
+                wireWorldApp.mainWindowController.refresh(mainFieldsTable);
+            }
+        });
+        timeline.getKeyFrames().add(changingState);
+        timeline.play();
+
+    }*/
 
 
 

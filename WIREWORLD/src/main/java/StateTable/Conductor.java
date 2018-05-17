@@ -20,4 +20,9 @@ public class Conductor implements FieldState {
     public Color getColor(){
         return this.color;
     }
+
+    @Override
+    public String toString() {
+        return "Conductor";
+    }
 }

@@ -16,7 +16,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 
-
 public class MainWindowController {
 
     private WireWorldApp application;
@@ -26,6 +25,8 @@ public class MainWindowController {
     private double fieldHeight;
     private int canvasHeightInFields;
     private int canvasWidthInFields;
+    private SaveWindowController saveWindowController;
+    private LoadWindowController loadWindowController;
 
 
     private GraphicsContext graphicsContextAnimationCanvas;
@@ -52,6 +53,8 @@ public class MainWindowController {
     JFXToggleButton start_togglebutton;
     @FXML
     JFXSlider tempoSlider;
+    @FXML
+    JFXButton saveButton;
 
 
     public void initialize() {
@@ -172,19 +175,36 @@ public class MainWindowController {
     public void clear() {
         graphicsContextDrawingCanvas.setFill(Color.BLACK);
         graphicsContextDrawingCanvas.fillRect(0, 0, 800, 800);
+        FieldsTable fieldsTable = pen.getFieldsTable();
+        fieldsTable.resetFieldsTable();
+        if (start_togglebutton.isSelected()) {
+            start_togglebutton.setSelected(false);
+            this.animateController();
+        }
         drawGrid();
-
     }
 
 
     public void animateController() {
-            if(start_togglebutton.isSelected()){
-                application.animate();
-            }
-            else {
-                application.pause();
-            }
+        if (start_togglebutton.isSelected()) {
+            application.animate();
+        } else {
+            application.pause();
         }
-
     }
+
+
+    public void saveButtonAction() {
+        saveWindowController = new SaveWindowController(drawing_canvas);
+        saveWindowController.save();
+    }
+
+    public void loadButtonAction(){
+        loadWindowController = new LoadWindowController(drawing_canvas);
+        loadWindowController.load();
+        pen.setFieldsTable(loadWindowController.getFieldsTable());
+    }
+
+
+}
 

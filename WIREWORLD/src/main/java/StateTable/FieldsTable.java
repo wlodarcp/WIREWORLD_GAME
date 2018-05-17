@@ -56,6 +56,17 @@ public class FieldsTable {
                 this.fieldsArray[j][i].changeState();
     }
 
+    public void resetFieldsTable(){
+        for (int i = 0; i < height; i++)
+            for (int j = 0; j < width; j++) {
+            this.fieldsArray[j][i].setFieldState(new Empty());
+            }
+    }
+
+    public void setFieldsArray(Field[][] fieldsArray){
+        this.fieldsArray = fieldsArray;
+    }
+
     public Field[][] getFieldsArray() {
         return fieldsArray;
     }

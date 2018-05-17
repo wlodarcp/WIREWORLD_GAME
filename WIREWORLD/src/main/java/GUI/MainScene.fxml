@@ -27,9 +27,9 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="634.0" prefWidth="800.0">
                      <children>
                         <JFXToggleButton fx:id="start_togglebutton" layoutY="-1.0" onAction="#animateController" prefHeight="57.0" prefWidth="196.0" style="-fx-border-color: black;" text="Start" toggleColor="#2502fa" toggleLineColor="#bed6ff" />
-                        <JFXButton fx:id="save_button" layoutX="196.0" layoutY="-3.0" prefHeight="64.0" prefWidth="155.0" style="-fx-border-color: black;" text="Save" />
+                        <JFXButton fx:id="saveButton" layoutX="196.0" layoutY="-3.0" onAction="#saveButtonAction" prefHeight="64.0" prefWidth="155.0" style="-fx-border-color: black;" text="Save" />
                         <Canvas fx:id="animation_canvas" height="544.0" layoutY="59.0" width="800.0" />
-                        <JFXButton fx:id="open_button" layoutX="351.0" layoutY="-6.0" prefHeight="67.0" prefWidth="200.0" style="-fx-border-color: black;" text="Open" />
+                        <JFXButton fx:id="open_button" layoutX="351.0" layoutY="-6.0" onAction="#loadButtonAction" prefHeight="67.0" prefWidth="200.0" style="-fx-border-color: black;" text="Open" />
                         <Pane fx:id="gens_textfield" layoutX="551.0" prefHeight="61.0" prefWidth="254.0" style="-fx-border-color: black;">
                            <children>
                               <JFXTextField layoutX="60.0" layoutY="18.0" />

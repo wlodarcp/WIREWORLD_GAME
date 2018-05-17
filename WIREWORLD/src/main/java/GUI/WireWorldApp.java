@@ -28,10 +28,12 @@ public class WireWorldApp extends Application {
 
     public MainWindowController mainWindowController;
     private Stage primaryStage;
+
     public Stage getPrimaryStage() {
         return primaryStage;
     }
-    private FieldsTable mainFieldsTable = new FieldsTable(30,30);
+
+    private FieldsTable mainFieldsTable = new FieldsTable(30, 30);
     private Color bacgroundColor;
     private Pen pen = new Pen(mainFieldsTable);
     private Timeline timeline;
@@ -40,7 +42,6 @@ public class WireWorldApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 
 
     @Override
@@ -65,7 +66,7 @@ public class WireWorldApp extends Application {
         return controller;
     }
 
-    public void animate(){
+    public void animate() {
         mainFieldsTable = pen.getFieldsTable();
         timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -82,16 +83,16 @@ public class WireWorldApp extends Application {
 
     }
 
-    public void pause(){
+    public void pause() {
         timeline.pause();
     }
 
     public void show(Scene scene) {
         primaryStage.setScene(scene);
     }
+
     public void setPen(Pen pen) {
-       this.pen = pen;
-       System.out.print("PEnpen ustawiony w mainie");
+        this.pen = pen;
     }
 
     public void setMainFieldsTable(FieldsTable mainFieldsTable) {
@@ -108,6 +109,10 @@ public class WireWorldApp extends Application {
 
     public Pen getPen() {
         return pen;
+    }
+
+    public Timeline getTimeline() {
+        return timeline;
     }
 }
 

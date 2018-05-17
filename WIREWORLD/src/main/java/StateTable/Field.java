@@ -12,6 +12,11 @@ public class Field  {
         this.position = position;
     }
 
+    @Override
+    public String toString() {
+        return fieldState.toString();
+    }
+
     public void changeState(){
         fieldState.changeState(this);
     }

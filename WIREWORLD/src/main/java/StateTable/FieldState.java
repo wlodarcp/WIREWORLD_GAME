@@ -6,4 +6,6 @@ public interface FieldState {
     public void changeState(Field field);
 
     public Color getColor();
+
+
 }

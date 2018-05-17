@@ -19,4 +19,8 @@ public class Tail implements FieldState {
         return this.color;
     }
 
+    @Override
+    public String toString() {
+        return "Tail";
+    }
 }
