@@ -1,10 +1,11 @@
 package Draw;
 
+import StateTable.Field;
 import StateTable.FieldState;
 
 public class Insert implements PenState{
 
-    private FieldState fieldState = null;
+    private FieldState fieldState = null ;
 
     @Override
     public void changePenState(Pen pen){
@@ -15,4 +16,6 @@ public class Insert implements PenState{
     public FieldState getFieldState() {
         return fieldState;
     }
+
+
 }

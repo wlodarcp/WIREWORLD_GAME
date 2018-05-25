@@ -4,7 +4,7 @@ package StateTable;
 import javafx.scene.paint.Color;
 
 public class Conductor implements FieldState {
-    private final Color color = Color.YELLOW;
+    private static Color color = Color.YELLOW;
 
     public Conductor() {
     }
@@ -24,5 +24,9 @@ public class Conductor implements FieldState {
     @Override
     public String toString() {
         return "Conductor";
+    }
+
+    public static void setColor(Color c){
+        color = c;
     }
 }

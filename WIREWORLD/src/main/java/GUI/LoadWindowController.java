@@ -5,27 +5,22 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static javafx.scene.paint.Color.GOLD;
-
 public class LoadWindowController {
     private FileChooser fileChooser;
-    private Canvas drawingCanvas;
+    private Canvas canvas;
     private GraphicsContext graphicsContext;
     private File file;
     private Canvas temporaryCanvas;
@@ -36,8 +31,8 @@ public class LoadWindowController {
     //private ;
 
     public LoadWindowController(Canvas canvas){
-        drawingCanvas = canvas;
-        graphicsContext = drawingCanvas.getGraphicsContext2D();
+        this.canvas = canvas;
+        graphicsContext = this.canvas.getGraphicsContext2D();
         try {
             base = ImageIO.read(new File("src/main/java/GUI/base.png"));
         } catch (IOException e) {
@@ -48,7 +43,7 @@ public class LoadWindowController {
 
         }
         for(int i = 0; i < 4; i ++ ){
-            baseArray[i] = base.getSubimage((int)(i*drawingCanvas.getWidth()/30),0,(int)(drawingCanvas.getWidth()/30),(int)(drawingCanvas.getHeight()/30));
+            baseArray[i] = base.getSubimage((int)(i* this.canvas.getWidth()/30),0,(int)(this.canvas.getWidth()/30),(int)(this.canvas.getHeight()/30));
         }
 
     }
@@ -70,7 +65,7 @@ public class LoadWindowController {
 
         bufferedImage = ImageIO.read(file);
         Image image = SwingFXUtils.toFXImage(bufferedImage,null);
-        if (image.getHeight() == drawingCanvas.getHeight())
+        if (image.getHeight() == canvas.getHeight())
         graphicsContext.drawImage(image,0,0);
         fieldsTable = generateFieldsTable(bufferedImage);
 
@@ -96,7 +91,7 @@ public class LoadWindowController {
             BufferedImage[][] fieldsBufferedImage = new BufferedImage[30][30];
             for (int y = 0; y < 30; y ++){
                 for (int x = 0; x < 30; x++){
-                    fieldsBufferedImage[y][x] = image.getSubimage((int)(x*(drawingCanvas.getWidth()/30)), (int)(y*(drawingCanvas.getHeight()/30)), (int)(drawingCanvas.getWidth()/30),(int)( drawingCanvas.getHeight()/30));
+                    fieldsBufferedImage[y][x] = image.getSubimage((int)(x*(canvas.getWidth()/30)), (int)(y*(canvas.getHeight()/30)), (int)(canvas.getWidth()/30),(int)( canvas.getHeight()/30));
                     fieldsTable.findFieldByPosition(x,y).setFieldState(checkField(fieldsBufferedImage[y][x]));
                 }
             }
@@ -105,6 +100,7 @@ public class LoadWindowController {
 
 
     private FieldState checkField(BufferedImage field){
+        FieldState fieldState = null;
         if(bufferedImagesEqual(field, baseArray[0]))
             return new Conductor();
         if(bufferedImagesEqual(field, baseArray[1]))
@@ -129,6 +125,8 @@ public class LoadWindowController {
         }
         return true;
     }
+
+
 
     public FieldsTable getFieldsTable() {
         return fieldsTable;

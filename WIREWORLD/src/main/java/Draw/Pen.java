@@ -1,7 +1,7 @@
 package Draw;
 
+import Elements.Element;
 import StateTable.*;
-import javafx.util.Pair;
 
 
 public class Pen {
@@ -49,13 +49,25 @@ public class Pen {
 
     public void affectField(Position position, double widthOfField, double heightOfField){
 
+
         int x = position.getX();
         int y = position.getY();
 
         x= (int) (x/widthOfField);
         y = (int) (y/heightOfField);
+        if (this.penState instanceof Insert){
+            for (int i = 0; i <  this.getElement().getHeight(); i++){
+                for (int j = 0; j < this.getElement().getWidth(); j++){
+                    if (fieldsTable.findFieldByPosition(x+j, y+i)!= null)
+                    fieldsTable.findFieldByPosition(x+j,y+i).setFieldState(element.getFieldsTable().findFieldByPosition(j,i).getFieldState());
 
-        fieldsTable.findFieldByPosition(x,y).setFieldState(this.penState.getFieldState());
+                }
+            }
+
+        }else {
+            if (fieldsTable.findFieldByPosition(x, y)== null){}
+            else fieldsTable.findFieldByPosition(x, y).setFieldState(this.penState.getFieldState());
+        }
     }
 
 

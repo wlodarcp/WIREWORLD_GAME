@@ -3,7 +3,7 @@ package StateTable;
 import javafx.scene.paint.Color;
 
 public class Empty implements FieldState {
-    private final Color color = Color.BLACK;
+    private static Color color = Color.BLACK;
     public Empty() {
     }
 
@@ -19,5 +19,9 @@ public class Empty implements FieldState {
     @Override
     public String toString() {
         return "Empty";
+    }
+
+    public static void setColor(Color c) {
+        color = c;
     }
 }
